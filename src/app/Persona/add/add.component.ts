@@ -9,18 +9,16 @@ import { Persona } from 'src/app/Modelo/Persona';
   styleUrls: ['./add.component.css']
 })
 export class AddComponent implements OnInit {
-  per:Persona = new Persona();
+  persona:Persona = new Persona();
   constructor(private router:Router, private service:ServiceService) { }
 
   ngOnInit(){
   }
 
-  Registrar(nombre:String, apellidos:String){
-    this.per.nombres = nombre;
-    this.per.apellidos = apellidos;
-    this.service.createPersona(this.per)
+  Registrar(){
+    this.service.createPersona(this.persona)
     .subscribe(data=>{
-      alert("Se agregó con éxito.");
+      alert("Successfully added.");
       this.router.navigate(["listar"]);
     })
   }
